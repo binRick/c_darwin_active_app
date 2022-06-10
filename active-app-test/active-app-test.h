@@ -1,8 +1,10 @@
 #pragma once
 #ifndef TERM_UTILS_TEST_H
 #define TRUE_UTILS_TEST_H
-#include "../active-app/active-app.h"
-#include "../submodules/cargs/include/cargs.h"
+#include "active-app/active-app.h"
+#include "submodules/c_stringfn/include/stringfn.h"
+#include "submodules/cargs/include/cargs.h"
+#include "submodules/greatest/greatest.h"
 #include <assert.h>
 #include <ctype.h>
 #include <stdarg.h>

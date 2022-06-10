@@ -6,7 +6,12 @@ bool RUNNING = true;
 void show_focus(){
   focused_t *fp = get_focused_process();
 
-  printf("<%d> Focus: %s / %d\n", getpid(), fp->name, fp->pid);
+  fprintf(stdout,
+          "<%d> Focus: Name:%10s | Pid:%8d | \n",
+          getpid(),
+          fp->name,
+          fp->pid
+          );
 }
 
 

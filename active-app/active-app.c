@@ -16,7 +16,7 @@ focused_t * get_focused_process(){
       info.processName       = processName;
       err                    = GetProcessInformation(&psn, &info);
       if (err == noErr) {
-        f->name = strdup(processName);
+        f->name = stringfn_trim(strdup(processName));
         GetProcessPID(&psn, &(f->pid));
         return(f);
       }

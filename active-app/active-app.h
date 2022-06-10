@@ -21,6 +21,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "submodules/c_stringfn/include/stringfn.h"
 #include <fnmatch.h>
 #include <libproc.h>
 #include <mach/mach_time.h>
@@ -31,7 +32,6 @@
 #include <sys/sysctl.h>
 #include <sys/time.h>
 #include <sys/types.h>
-
 
 typedef struct focused_t focused_t;
 struct focused_t {

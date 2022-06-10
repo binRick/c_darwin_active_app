@@ -40,10 +40,18 @@ add_project_link_arguments(osx_ldflags, language : ['objc', 'c'])
 #############################################################################
 inc = include_directories(
   'submodules/',
+  './',
+  '../',
+  '../../',
+  '../../../',
+  '../submodules',
 )
 #//***********************************************************/
 cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
 parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
+#//////////////////////////////////////////////////////////////////////
+subdir('meson/deps/greatest')
+subdir('meson/deps/c_stringfn')
 #//////////////////////////////////////////////////////////////////////
 subdir('active-app')
 subdir('active-app-test')

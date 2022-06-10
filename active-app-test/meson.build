@@ -4,7 +4,9 @@ active_app_test_srcs = [
 active_app_include_dirs = [
 ]
 active_app_test_deps = [
-       active_app_dep,
+  greatest_dep,
+  c_stringfn_dep,
+  active_app_dep,
 ]
 
 if get_option('enable-binaries')
@@ -15,6 +17,7 @@ if get_option('enable-binaries')
      dependencies: active_app_test_deps,
      include_directories: [
        active_app_include_dirs,
+       inc,
      ],
   )
   if get_option('enable-binary-tests')
