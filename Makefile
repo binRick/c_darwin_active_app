@@ -35,14 +35,22 @@ SOURCE_VENV_CMD = source $(VENV_DIR)/bin/activate
 TIDIED_FILES = \
 			   */*.h */*.c
 ##############################################################
-all: do-build do-test
+all: build test
 clean:
 	@rm -rf build
-do-test: test
-test:
-	@clear
+test: do-test
+do-test: test-bin test-module
+test-module:
+	@echo TESTING MDDULE
+	@./build/active-app-module-test/active-app-module-test -v | ./submodules/greatest/contrib/greenest
+	@gtimeout .3 ./build/active-app-module-test/active-app-module-test --watch 2>/dev/null ||true
+	@echo TESTING MDDULE OK; echo
+
+test-bin:
+	@echo TESTING
 	@./build/active-app-test/active-app-test -v | ./submodules/greatest/contrib/greenest
 	@gtimeout .3 ./build/active-app-test/active-app-test --watch 2>/dev/null ||true
+	@echo TESTING OK; echo
 
 do-meson: 
 	@eval cd . && {  meson build || { meson build --reconfigure || { meson build --wipe; } && meson build; }; }
@@ -51,7 +59,7 @@ do-build:
 	@eval cd . && { ninja -C build; }
 	@eval cd . && { ninja test -C build -v; }
 
-do-build: do-meson do-build
+build: do-meson do-build
 
 uncrustify:
 	@$(UNCRUSTIFY) -c etc/uncrustify.cfg --replace $(TIDIED_FILES) 

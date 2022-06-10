@@ -10,3 +10,6 @@
 [submodule "submodules/c_stringfn"]
 	path = submodules/c_stringfn
 	url = https://github.com/sagiegurari/c_stringfn
+[submodule "submodules/module"]
+	path = submodules/module
+	url = https://github.com/clibs/module
