@@ -13,3 +13,6 @@
 [submodule "submodules/module"]
 	path = submodules/module
 	url = https://github.com/clibs/module
+[submodule "submodules/meson_deps"]
+	path = submodules/meson_deps
+	url = https://github.com/binRick/meson_deps

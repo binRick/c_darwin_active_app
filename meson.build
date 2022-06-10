@@ -49,6 +49,8 @@ inc = include_directories(
 #//***********************************************************/
 cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
 parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
+pwd_bin = find_program('pwd', required : true)
+pwd = run_command(pwd_bin, check: true).stdout().strip()
 #//////////////////////////////////////////////////////////////////////
 subdir('meson/deps/greatest')
 subdir('meson/deps/c_stringfn')
