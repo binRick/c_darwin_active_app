@@ -21,6 +21,6 @@ if get_option('enable-binaries')
      ],
   )
   if get_option('enable-binary-tests')
-    test('active-app-test', active_app_test_exec, args: ['--test'])
+    test('active-app-test', active_app_test_exec, args: [])
   endif
 endif

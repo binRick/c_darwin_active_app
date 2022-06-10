@@ -1,5 +1,4 @@
 #include "active-app-test.h"
-#define WATCH_INTERVAL_MS    200
 bool RUNNING = true;
 
 
@@ -15,13 +14,36 @@ void show_focus(){
 }
 
 
+TEST test_currently_focused_app(void) {
+  focused_t *fp = get_focused_process();
+
+  ASSERT_NEQm("focused process seems invalid", NULL, fp);
+  ASSERT_GTm("PID seems invalid", fp->pid, 0);
+  ASSERT_GTm("Prcess name seems invalid", strlen(fp->name), 0);
+  PASS();
+}
+
+
+SUITE(the_suite) {
+  RUN_TEST(test_currently_focused_app);
+}
+
+
+GREATEST_MAIN_DEFS();
+
+
+int do_test(int argc, char **argv) {
+  GREATEST_MAIN_BEGIN();
+  for (int i = 0; i < TEST_ITERATIONS; i++) {
+    RUN_SUITE(the_suite);
+  }
+  GREATEST_MAIN_END();
+  return(0);
+}
+
+
 int main(int argc, char **argv) {
   (void)argc; (void)argv;
-  if ((argc >= 2) && (strcmp(argv[1], "--test") == 0)) {
-    show_focus();
-    printf("OK\n");
-    return(0);
-  }
   if ((argc >= 2) && (strcmp(argv[1], "--watch") == 0)) {
     while (RUNNING == true) {
       show_focus();
@@ -29,6 +51,5 @@ int main(int argc, char **argv) {
     }
     return(0);
   }
-  show_focus();
-  return(0);
+  return(do_test(argc, argv));
 }
