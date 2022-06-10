@@ -4,9 +4,18 @@ project('c_darwin_active_app', ['c'],
    'c_std=gnu99',
   ]
 )
-bins = [
-  'm1',
-]
+#############################################################
+cc = meson.get_compiler('c')
+#//***********************************************************/
+osx_ldflags = []
+deps = []
+bin_srcs = []
+submodule_srcs = []
+#############################################################
+fs = import('fs')
+gnome = import('gnome')
+pkg_config = import('pkgconfig')
+#############################################################
 config = configuration_data()
 version = run_command('git', 'describe', '--tags')
 config.set('version', version.stdout().strip())
@@ -23,12 +32,12 @@ add_project_arguments('-Wno-unused-value', language : 'c')
 add_project_arguments('-Wno-gnu-alignof-expression', language : 'c')
 add_project_arguments('-Wno-varargs', language : 'c')
 add_project_arguments('-Wno-return-type', language : 'c')
-#//***********************************************************/
-deps = []
-bin_srcs = []
-submodule_srcs = []
-cc = meson.get_compiler('c')
-#//***********************************************************/
+#############################################################################
+osx_ldflags += ['-Wl,-framework,CoreFoundation']
+osx_ldflags += '-Wl,-framework,Carbon'
+osx_ldflags += ['-Wl,-framework,Foundation', '-Wl,-framework,AppKit']
+add_project_link_arguments(osx_ldflags, language : ['objc', 'c'])
+#############################################################################
 inc = include_directories(
   'submodules/',
 )

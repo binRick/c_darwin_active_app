@@ -3,7 +3,6 @@ active_app_srcs = [
 ]
 active_app_deps = [
 ]
-
 active_app_lib = static_library('active-app',
   active_app_srcs,
   install: false,

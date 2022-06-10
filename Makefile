@@ -33,12 +33,15 @@ ACTIVE_APP_DIR=$(DIR)/active-app
 SOURCE_VENV_CMD = source $(VENV_DIR)/bin/activate
 ##############################################################
 TIDIED_FILES = \
-			   $(ACTIVE_APP_DIR)/*.h $(ACTIVE_APP_DIR)/*.c
+			   */*.h */*.c
 ##############################################################
-all: do-build
+all: do-build do-test
 clean:
 	@rm -rf build
-
+do-test: test
+test:
+	@clear
+	@./build/active-app-test/active-app-test
 
 do-meson: 
 	@eval cd . && {  meson build || { meson build --reconfigure || { meson build --wipe; } && meson build; }; }
