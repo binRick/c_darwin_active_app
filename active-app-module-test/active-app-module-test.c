@@ -1,4 +1,5 @@
 #include "active-app-module-test.h"
+#include "submodules/log.h/log.h"
 //////////////////////////////////////////
 #define WATCH_INTERVAL_MS    100
 #define TEST_ITERATIONS      2
@@ -24,6 +25,8 @@ TEST test_currently_focused_app(void) {
   ASSERT_GTm("PID seems invalid", logger->GetPID(), 0);
   ASSERT_GTm("Prcess name seems invalid", strlen(logger->Name), 0);
   ASSERT_GTm("Prcess name seems invalid", strlen(logger->GetName()), 0);
+  log_info("name:%s", logger->Name);
+  log_info("pid:%d", logger->PID);
 
   PASS();
 }

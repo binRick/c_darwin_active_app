@@ -5,6 +5,7 @@ app_utils_c_args = [
   '-Wbo-address',
 ]
 app_utils_deps = [
+  active_app_dep,
   c_stringfn_dep,
   logh_dep,
 ]

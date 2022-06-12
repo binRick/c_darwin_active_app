@@ -20,6 +20,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+typedef struct focused_t focused_t;
+struct focused_t {
+  char  *name;
+  pid_t pid;
+};
 
 #include "submodules/c_stringfn/include/stringfn.h"
 #include <fnmatch.h>
@@ -33,10 +38,5 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
-typedef struct focused_t focused_t;
-struct focused_t {
-  char  *name;
-  pid_t pid;
-};
 
 focused_t * get_focused_process();

@@ -5,6 +5,7 @@ window_utils_c_args = [
   '-Wbo-address',
   ]
 window_utils_deps = [
+  active_app_dep,
   c_stringfn_dep,
   parson_dep,
   logh_dep,

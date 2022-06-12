@@ -1,4 +1,9 @@
+#include "active-app-module.h"
 #include "active-app-test.h"
+#include "app-utils.h"
+#include "submodules/greatest/greatest.h"
+#include "submodules/log.h/log.h"
+#include "window-utils.h"
 bool RUNNING = true;
 
 
@@ -20,6 +25,8 @@ TEST test_currently_focused_app(void) {
   ASSERT_NEQm("focused process seems invalid", NULL, fp);
   ASSERT_GTm("PID seems invalid", fp->pid, 0);
   ASSERT_GTm("Prcess name seems invalid", strlen(fp->name), 0);
+  log_debug("name:%s", fp->name);
+  log_debug("pid:%d", fp->pid);
   PASS();
 }
 

@@ -7,7 +7,6 @@ window_utils_test_include_dirs = [
        '../app-utils',
 ]
 window_utils_test_deps = [
-  greatest_dep,
   c_stringfn_dep,
   app_utils_dep,
   window_utils_dep,

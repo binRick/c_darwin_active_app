@@ -1,7 +1,6 @@
 #pragma once
-#ifndef TERM_UTILS_TEST_H
-#define TRUE_UTILS_TEST_H
-#include "active-app/active-app.h"
+#include "active-app.h"
+#include "app-utils.h"
 #include "submodules/c_stringfn/include/stringfn.h"
 #include "submodules/greatest/greatest.h"
 #include <ctype.h>
@@ -18,7 +17,5 @@
 #include <string.h>
 #include <sys/time.h>
 
+#define TEST_ITERATIONS      2
 #define WATCH_INTERVAL_MS    100
-#define TEST_ITERATIONS      1
-
-#endif
