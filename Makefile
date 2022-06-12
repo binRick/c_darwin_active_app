@@ -62,7 +62,7 @@ do-build:
 build: do-meson do-build
 
 uncrustify:
-	@$(UNCRUSTIFY) -c etc/uncrustify.cfg --replace $(TIDIED_FILES) 
+	@$(UNCRUSTIFY) -c submodules/meson_deps/etc/uncrustify.cfg --replace $(TIDIED_FILES) 
 #	@shfmt -w scripts/*.sh
 
 uncrustify-clean:

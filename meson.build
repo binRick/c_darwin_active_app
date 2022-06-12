@@ -1,63 +1,31 @@
-project('c_darwin_active_app', ['c'],
-  default_options: [
-   'warning_level=0',
-   'c_std=gnu99',
-  ]
-)
-#############################################################
+project('c_darwin_active_app', ['c'],default_options: ['warning_level=0','c_std=gnu99',])
 cc = meson.get_compiler('c')
-#//***********************************************************/
-osx_ldflags = []
-deps = []
-bin_srcs = []
-submodule_srcs = []
-#############################################################
-fs = import('fs')
-gnome = import('gnome')
-pkg_config = import('pkgconfig')
-#############################################################
-config = configuration_data()
-version = run_command('git', 'describe', '--tags')
-config.set('version', version.stdout().strip())
-add_project_arguments('-D_GNU_SOURCE', language : 'c')
-add_project_arguments('-DDBG_H_DEF_ONCE', language : 'c')
-add_project_arguments('-DDBG_H_NO_WARNING', language : 'c')
-add_project_arguments('-DASSERTF_DEF_ONCE', language : 'c')
-add_project_arguments('-DLOG_USE_COLOR', language : 'c')
-add_project_arguments('-DLOG_LEVEL=TRACE', language : 'c')
-add_project_arguments('-Wno-pragma-once-outside-header', language : 'c')
-add_project_arguments('-Wno-incompatible-pointer-types', language : 'c')
-add_project_arguments('-Wno-pointer-sign', language : 'c')
-add_project_arguments('-Wno-unused-value', language : 'c')
-add_project_arguments('-Wno-gnu-alignof-expression', language : 'c')
-add_project_arguments('-Wno-varargs', language : 'c')
-add_project_arguments('-Wno-return-type', language : 'c')
-#############################################################################
-osx_ldflags += ['-Wl,-framework,CoreFoundation']
-osx_ldflags += '-Wl,-framework,Carbon'
-osx_ldflags += ['-Wl,-framework,Foundation', '-Wl,-framework,AppKit']
-add_project_link_arguments(osx_ldflags, language : ['objc', 'c'])
-#############################################################################
-inc = include_directories(
-  'submodules/',
+pwd = run_command(find_program('pwd', required : true), check: true).stdout().strip()
+meson_deps_dir = pwd+'/submodules/meson_deps'
+inc = [include_directories(
   './',
-  '../',
-  '../../',
-  '../../../',
-  '../submodules',
-)
+)]
+#############################################################################
+subdir('submodules/meson_deps/meson/osx')
+subdir('submodules/meson_deps/meson/args')
+subdir('submodules/meson_deps/meson/inc')
 #//***********************************************************/
-cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
-parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
-pwd_bin = find_program('pwd', required : true)
-pwd = run_command(pwd_bin, check: true).stdout().strip()
-#//////////////////////////////////////////////////////////////////////
-subdir('meson/deps/greatest')
-subdir('meson/deps/c_stringfn')
+subdir('submodules/meson_deps/meson/deps/m')
+subdir('submodules/meson_deps/meson/deps/cargs')
+subdir('submodules/meson_deps/meson/deps/c_string_buffer')
+subdir('submodules/meson_deps/meson/deps/c_stringfn')
+subdir('submodules/meson_deps/meson/deps/c_fsio')
+subdir('submodules/meson_deps/meson/deps/djbhash')
+subdir('submodules/meson_deps/meson/deps/parson')
+subdir('submodules/meson_deps/meson/deps/b64')
+subdir('submodules/meson_deps/meson/deps/bytes')
+subdir('submodules/meson_deps/meson/deps/greatest')
 #//////////////////////////////////////////////////////////////////////
 subdir('active-app')
 subdir('active-app-test')
 #//////////////////////////////////////////////////////////////////////
 subdir('active-app-module')
 subdir('active-app-module-test')
+#//////////////////////////////////////////////////////////////////////
+subdir('app-utils')
 #//////////////////////////////////////////////////////////////////////
