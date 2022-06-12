@@ -12,6 +12,7 @@ window_utils_test_deps = [
   app_utils_dep,
   window_utils_dep,
   logh_dep,
+  greatest_dep,
 ]
 
 if get_option('enable-binaries')
@@ -21,6 +22,6 @@ if get_option('enable-binaries')
      include_directories: window_utils_test_include_dirs,
   )
   if get_option('enable-binary-tests')
-    test('window-utils-test', window_utils_test_exec, args: [])
+    test('window-utils-test', window_utils_test_exec, args: ['-v'])
   endif
 endif

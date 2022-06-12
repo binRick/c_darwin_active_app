@@ -7,6 +7,8 @@ window_utils_c_args = [
 window_utils_deps = [
   c_stringfn_dep,
   parson_dep,
+  logh_dep,
+  ansicodes_dep,
 ]
 window_utils_lib = static_library('window-utils',
   window_utils_srcs,

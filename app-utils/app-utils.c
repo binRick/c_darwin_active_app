@@ -1,10 +1,13 @@
 #pragma once
 #include "app-utils.h"
-#include <fnmatch.h>
-#pragma GCC diagnostic ignored "-Waddress"
+#ifndef LOGLEVEL
+#define LOGLEVEL    DEFAULT_LOGLEVEL
+#endif
+#include "submodules/log.h/log.h"
 
 
 int CFDictionaryGetInt(CFDictionaryRef dict, const void *key) {
+  log_debug("CFDictionaryGetInt.......");
   int isSuccess, value;
 
   isSuccess = CFNumberGetValue(
@@ -16,6 +19,7 @@ int CFDictionaryGetInt(CFDictionaryRef dict, const void *key) {
 
 
 char *CFDictionaryCopyCString(CFDictionaryRef dict, const void *key) {
+  log_debug("CFDictionaryCopyCString.......");
   const void *dictValue;
   CFIndex    length;
   int        maxSize, isSuccess;

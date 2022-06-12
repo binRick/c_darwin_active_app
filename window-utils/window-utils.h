@@ -1,4 +1,8 @@
 #pragma once
+#ifndef DEFAULT_LOGLEVEL
+#define DEFAULT_LOGLEVEL    2
+#endif
+#include "ansicodes/ansicodes.h"
 #include "app-utils.h"
 #include "submodules/c_stringfn/include/stringfn.h"
 #include <assert.h>
@@ -17,7 +21,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-
+///////////////////////////////////////////////////
 typedef struct {
   int longDisplay;
   int id;
@@ -33,7 +37,7 @@ typedef struct {
   int     hasSize;
   int     movedWindow;
 } MoveWinCtx;
-
+///////////////////////////////////////////////////
 char *windowTitle(char *appName, char *windowName);
 static int emptyWindowNameAllowed(char *appName);
 void PrintWindow(CFDictionaryRef window, void *ctxPtr);
@@ -46,3 +50,6 @@ CGPoint AXWindowGetPosition(AXUIElementRef window);
 void AXWindowSetPosition(AXUIElementRef window, CGPoint position);
 CGSize AXWindowGetSize(AXUIElementRef window);
 void AXWindowSetSize(AXUIElementRef window, CGSize size);
+void MoveWindow(CFDictionaryRef window, void *ctxPtr);
+
+///////////////////////////////////////////////////

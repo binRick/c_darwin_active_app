@@ -1,4 +1,8 @@
 #pragma once
+#define APPLICATION_NAME    "app-utils-test"
+#ifndef DEFAULT_LOGLEVEL
+#define DEFAULT_LOGLEVEL    4
+#endif
 #include "submodules/c_stringfn/include/stringfn.h"
 #include "submodules/greatest/greatest.h"
 #include <ctype.h>
@@ -14,7 +18,4 @@
 #include <string.h>
 #include <string.h>
 #include <sys/time.h>
-
-#define WATCH_INTERVAL_MS    100
-#define TEST_ITERATIONS      1
 

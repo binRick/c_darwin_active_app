@@ -36,10 +36,15 @@ TIDIED_FILES = \
 			   */*.h */*.c
 ##############################################################
 all: build test
+test-libs: 
+	./build/window-utils-test/window-utils-test
+	./build/app-utils-test/app-utils-test
+
 clean:
 	@rm -rf build
 test: do-test
-do-test: test-bin test-module
+do-test: 
+	@cd build && meson test --no-rebuild --print-errorlogs -v
 test-module:
 	@echo TESTING MDDULE
 	@./build/active-window-module-test/active-window-module-test -v | ./submodules/greatest/contrib/greenest

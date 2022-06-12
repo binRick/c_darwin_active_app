@@ -6,6 +6,7 @@ app_utils_c_args = [
 ]
 app_utils_deps = [
   c_stringfn_dep,
+  logh_dep,
 ]
 app_utils_lib = static_library('app-utils',
   app_utils_srcs,
