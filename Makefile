@@ -29,7 +29,7 @@ LIST_DIR=$(DIR)/list
 SOURCE_VENV_CMD=$(DIR)/scripts
 VENV_DIR=$(DIR)/.venv
 SCRIPTS_DIR=$(DIR)/scripts
-ACTIVE_APP_DIR=$(DIR)/active-app
+ACTIVE_APP_DIR=$(DIR)/active-window
 SOURCE_VENV_CMD = source $(VENV_DIR)/bin/activate
 ##############################################################
 TIDIED_FILES = \
@@ -42,14 +42,14 @@ test: do-test
 do-test: test-bin test-module
 test-module:
 	@echo TESTING MDDULE
-	@./build/active-app-module-test/active-app-module-test -v | ./submodules/greatest/contrib/greenest
-	@gtimeout .3 ./build/active-app-module-test/active-app-module-test --watch 2>/dev/null ||true
+	@./build/active-window-module-test/active-window-module-test -v | ./submodules/greatest/contrib/greenest
+	@gtimeout .3 ./build/active-window-module-test/active-window-module-test --watch 2>/dev/null ||true
 	@echo TESTING MDDULE OK; echo
 
 test-bin:
 	@echo TESTING
-	@./build/active-app-test/active-app-test -v | ./submodules/greatest/contrib/greenest
-	@gtimeout .3 ./build/active-app-test/active-app-test --watch 2>/dev/null ||true
+	@./build/active-window-test/active-window-test -v | ./submodules/greatest/contrib/greenest
+	@gtimeout .3 ./build/active-window-test/active-window-test --watch 2>/dev/null ||true
 	@echo TESTING OK; echo
 
 do-meson: 
