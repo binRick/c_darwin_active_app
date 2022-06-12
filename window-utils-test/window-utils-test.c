@@ -1,4 +1,4 @@
-#define APPLICATION_NAME "app-utils-test"
+#define APPLICATION_NAME    "app-utils-test"
 #include "app-utils.h"
 #include "submodules/log.h/log.h"
 #include "window-utils-test.h"

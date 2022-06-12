@@ -1,9 +1,9 @@
 #pragma once
 #include "app-utils.h"
 #include "submodules/c_stringfn/include/stringfn.h"
+#include <assert.h>
 #include <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
-#include <assert.h>
 #include <fnmatch.h>
 #include <libproc.h>
 #include <mach/mach_time.h>
@@ -25,13 +25,13 @@ typedef struct {
   int jsonMode;
 } LsWinCtx;
 typedef struct {
-    int id;  
-    int fromRight;  
-    int fromBottom; 
-    CGPoint position;
-    CGSize size; 
-    int hasSize; 
-    int movedWindow;  
+  int     id;
+  int     fromRight;
+  int     fromBottom;
+  CGPoint position;
+  CGSize  size;
+  int     hasSize;
+  int     movedWindow;
 } MoveWinCtx;
 
 char *windowTitle(char *appName, char *windowName);
